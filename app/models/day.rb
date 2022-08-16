@@ -1,5 +1,5 @@
 class Day < ActiveHash::Base
-  salf.data = [
+  self.data = [
     { id: 1, name: '___' },
     { id: 2, name: '1~2日で発送' },
     { id: 3, name: '2~3日で発送' },

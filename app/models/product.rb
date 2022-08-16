@@ -21,7 +21,7 @@ class Product < ApplicationRecord
   validates :prefecture_id,   presence: true
   validates :day_id,          presence: true
 
-  with_options numericality: {other_than 1, message: 'select'} do
+  with_options numericality: { other_than: 1, message: 'select' } do
     validates :category_id
     validates :day_id
     validates :shipping_fee_id

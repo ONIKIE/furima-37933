@@ -1,4 +1,4 @@
-class prefecture < ActiveHash::Base
+class Prefecture < ActiveHash::Base
   self.data = [
     { id: 1, name: '___' },
     { id: 2, name: '北海道' },
