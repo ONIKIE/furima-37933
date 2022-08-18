@@ -14,10 +14,9 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      render:new
+      render :new
     end
   end
-
 
   private
 
@@ -26,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:image, :name, :explanation, :category_id, :shipping_fee_id, :status_id, :prefecture_id, :day_id, :price).merge(user_id: current_user.id)
+    params.require(:product).permit(:image, :name, :explanation, :category_id, :shipping_fee_id, :status_id, :prefecture_id,
+                                    :day_id, :price).merge(user_id: current_user.id)
   end
 end

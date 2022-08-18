@@ -7,9 +7,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :status
   has_one_attached :image
 
-
   belongs_to :user
- 
 
   validates :image,           presence: true
   validates :name,            presence: true
@@ -29,5 +27,6 @@ class Product < ApplicationRecord
     validates :status_id
   end
 
-validates :price, format: { with: /\A[0-9]+\z/, message: 'Price Half-width number' }, inclusion: { in: (300..9_999_999), message: 'Out of setting range' }
+  validates :price, format: { with: /\A[0-9]+\z/, message: 'Price Half-width number' },
+                    inclusion: { in: (300..9_999_999), message: 'Out of setting range' }
 end

@@ -7,11 +7,9 @@ RSpec.describe Product, type: :model do
       @product.image = fixture_file_upload('public/images/test_image.png')
     end
 
-    
     it '全ての項目を入力すれば出品できる' do
-       expect(@product).to be_valid
+      expect(@product).to be_valid
     end
-
 
     it '画像が空だと登録できない' do
       @product.image = nil
@@ -46,7 +44,7 @@ RSpec.describe Product, type: :model do
     it '配送料の負担が選択されていなければ登録できない' do
       @product.shipping_fee_id = 1
       @product.valid?
-      expect(@product.errors .full_messages).to include('Shipping fee select')
+      expect(@product.errors.full_messages).to include('Shipping fee select')
     end
 
     it '配送元の地域が選択されていなければ登録できない' do
