@@ -11,6 +11,13 @@ RSpec.describe Product, type: :model do
       expect(@product).to be_valid
     end
 
+
+    it 'ユーザー登録している人でないと出品できない' do
+      @item.user_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('User must exist', "User can't be blank")
+    end
+
     it '画像が空だと登録できない' do
       @product.image = nil
       @product.valid?
