@@ -75,19 +75,25 @@ RSpec.describe Product, type: :model do
     it '価格が300円以下だと登録できない' do
       @product.price = 299
       @product.valid?
-      expect(@product.errors.full_messages).to include('Price Out of setting range')
+      expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
     end
 
     it '価格が9999999円以上だと登録できない' do
       @product.price = 10_000_000
       @product.valid?
-      expect(@product.errors.full_messages).to include('Price Out of setting range')
+      expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
     end
 
     it '販売価格は半角数字以外では登録できない' do
       @product.price = '１０００'
       @product.valid?
-      expect(@product.errors.full_messages).to include('Price Out of setting range')
+      expect(@product.errors.full_messages).to include('Price is not a number')
+    end
+
+    it '販売価格に小数点が含まれると登録できない' do
+      @product.price = '500.1'
+      @product.valid?
+      expect(@product.errors.full_messages).to include('Price must be an integer')
     end
   end
 end
