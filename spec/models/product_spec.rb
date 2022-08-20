@@ -61,9 +61,9 @@ RSpec.describe Product, type: :model do
     end
 
     it '発送までの日数が選択されていなければ登録できない' do
-      @product.day_id = 1
+      @product.shipping_date_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include('Day select')
+      expect(@product.errors.full_messages).to include('Shipping date select')
     end
 
     it '価格が空だと登録できない' do
