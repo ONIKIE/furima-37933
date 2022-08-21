@@ -127,7 +127,7 @@
       <%= link_to '新規投稿商品', new_product_path %>
     </div>
     <ul class='item-lists'>
-
+      <% if @products.present? %>
       <% @products.each do |product| %>
       <li class='list'>
         <%= link_to products_path(product.id) do %>
@@ -158,8 +158,9 @@
         <% end %>
       </li>
       <% end %>
-
-      <% if @product.blank? then %>
+      <% else %>
+        <%# 商品がない場合 %>
+      <%# if @product.blank? then %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
