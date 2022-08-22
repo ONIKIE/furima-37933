@@ -10,15 +10,15 @@ class Product < ApplicationRecord
   belongs_to :user
 
   with_options presence: true do
-  validates :image
-  validates :name
-  validates :explanation
-  validates :price
-  validates :category_id
-  validates :status_id
-  validates :shipping_fee_id
-  validates :prefecture_id
-  validates :shipping_date_id
+    validates :image
+    validates :name
+    validates :explanation
+    validates :price
+    validates :category_id
+    validates :status_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :shipping_date_id
   end
 
   with_options numericality: { other_than: 1, message: 'select' } do
