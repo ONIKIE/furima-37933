@@ -11,7 +11,6 @@ RSpec.describe Product, type: :model do
       expect(@product).to be_valid
     end
 
-
     it 'ユーザーが紐づいていなければ出品できない' do
       @product.user = nil
       @product.valid?
