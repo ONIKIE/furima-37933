@@ -41,18 +41,11 @@ class ProductsController < ApplicationController
                                     :shipping_date_id, :price).merge(user_id: current_user.id)
   end
 
-  def ensure_current_user
-    product = Product.find(params[:id])
-    if product.user_id != current_user.id
-    end
-  end
-
   def set_product
     @product = Product.find(params[:id])
   end
 
   def ensure_correct_user
-    @product = Product.find(params[:id])
     unless @product.user.id == current_user.id
       redirect_to root_path
     end
