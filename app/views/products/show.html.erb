@@ -24,20 +24,18 @@
         <%= @product.shipping_fee.name %>
       </span>
     </div>
-
-    <% if @product.purchase.blank? %> 
-    <%# 出品者かつ在庫があれば編集・削除の表示%>
-    <% if user_signed_in? && current_user.id == @product.user_id %>
-    <%= link_to "商品の編集", edit_product_path(@product[:id]), method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", product_path, method: :delete, class:"item-destroy" %>
-    
+    <%# ログインしていることが前提 %>
+    <% if user_signed_in? %> 
+    <%# 出品者かつ未購入品であれば、編集・削除を表示 %>
+    <% if current_user.id == @product.user_id && @product.purchase.blank? %> 
+      <%= link_to '商品の編集', edit_product_path(@product), method: :get, class: "item-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', product_path, method: :delete, class:'item-destroy' %>
     <% else %>
-    <%# 出品者以外かつ在庫があれば購入画面表示 %>
-    <%= link_to "購入画面に進む", product_purchases_path(@product[:id]) ,class:"item-red-btn"%>
+    <%# 出品者以外かつ未購入品であれば、購入画面を表示 %>
+     <%= link_to '購入画面に進む', product_purchases_path(@product), class:"item-red-btn"%>
     <% end %>
-    <% end %>
-
+  <% end %>
 
     <div class="item-explain-box">
       <span><%= @product.explanation %></span>
