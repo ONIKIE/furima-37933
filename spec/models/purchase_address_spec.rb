@@ -24,7 +24,7 @@ RSpec.describe PurchaseAddress, type: :model do
     it '都道府県が「---」だと登録できない' do
       @purchase.prefecture_id = 1
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Prefecture select")
+      expect(@purchase.errors.full_messages).to include('Prefecture select')
     end
 
     it '都道府県が空だと保存できないこと' do
@@ -32,7 +32,6 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Prefecture can't be blank")
     end
-
 
     it '市区町村が空だと登録できない' do
       @purchase.municipality = nil
