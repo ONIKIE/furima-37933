@@ -58,5 +58,8 @@ class ProductsController < ApplicationController
     unless @product.user.id == current_user.id
       redirect_to root_path
     end
+    if @product.purchase.present?
+      redirect_to root_path
+    end
   end
 end

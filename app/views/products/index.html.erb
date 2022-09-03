@@ -128,19 +128,20 @@
     </div>
     <ul class='item-lists'>
       <% if @products.present? %>
+      <%# 商品一覧表示 %>
       <% @products.each do |product| %>
       <li class='list'>
         <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <!--
+
+          <% if product.purchase.present? %>
          <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          -->
-          <%# //商品が売れていればsold outを表示しましょう %>
+          <% end %>
+
 
         </div>
         <div class='item-info'>
@@ -158,9 +159,8 @@
         <% end %>
       </li>
       <% end %>
-      <% else %>
         <%# 商品がない場合 %>
-      <%# if @product.blank? then %>
+      <% if product = nil %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -179,6 +179,7 @@
         <% end %>
       </li>
       <% end %>
+      <%# /商品がない場合 %>
     </ul>
   </div>
   <%# /商品一覧 %>
@@ -187,4 +188,5 @@
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
+<% end%>
 <%= render "shared/footer" %>
