@@ -134,7 +134,7 @@
         <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
-
+          <% end %>
 
           <% if product.purchase.present? %>
          <div class='sold-out'>
@@ -188,5 +188,5 @@
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
-<% end%>
+<%# end %>
 <%= render "shared/footer" %>
