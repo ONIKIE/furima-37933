@@ -33,9 +33,11 @@
       <%= link_to '削除', product_path, method: :delete, class:'item-destroy' %>
     <% else %>
     <%# 出品者以外かつ未購入品であれば、購入画面を表示 %>
+    <% if @product.purchase.blank? %>
      <%= link_to '購入画面に進む', product_purchases_path(@product), class:"item-red-btn"%>
     <% end %>
   <% end %>
+  <% end%>
 
     <div class="item-explain-box">
       <span><%= @product.explanation %></span>
