@@ -58,6 +58,13 @@ RSpec.describe PurchaseAddress, type: :model do
           expect(@purchase.errors.full_messages).to include("Postal code Input correctly")
         end
 
+
+        it '郵便番号が半角数字以外だと保存できない' do
+          @purchase.postal_code = '１２３−４５６７'
+          @purchase.valid?
+          expect(@purchase.errors.full_messages).to include("Postal code Input correctly")
+        end
+
         it '都道府県が「---」だと保存できない' do
           @purchase.prefecture_id = 1
           @purchase.valid?
@@ -90,6 +97,18 @@ RSpec.describe PurchaseAddress, type: :model do
 
         it '電話番号が12桁以上あると保存できない' do
           @purchase.phone_number = 12_345_678_910_123_111
+          @purchase.valid?
+          expect(@purchase.errors.full_messages).to include('Phone number is invalid')
+        end
+
+        it '電話番号が9桁以下だと保存できない' do
+          @purchase.phone_number = 12_345_678_9
+          @purchase.valid?
+          expect(@purchase.errors.full_messages).to include('Phone number is invalid')
+        end
+
+        it '電話番号が半角数字以外だと保存できない' do
+          @purchase.phone_number = '１２３４５６７８９１'
           @purchase.valid?
           expect(@purchase.errors.full_messages).to include('Phone number is invalid')
         end
