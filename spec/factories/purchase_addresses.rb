@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :purchase_address do
-    user_id { Faker::Number.non_zero_digit }
-    product_id { Faker::Number.non_zero_digit }
     postal_code { '777-7777' }
     prefecture_id { Faker::Number.between(from: 2, to: 48) }
     municipality { Gimei.address.city.kanji }
