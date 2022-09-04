@@ -16,23 +16,13 @@ RSpec.describe PurchaseAddress, type: :model do
           expect(@purchase).to be_valid
         end
 
-        it 'user_idが空でなければ保存できる' do
-          @purchase.user_id = 1
-          expect(@purchase).to be_valid
-        end
-
-        it 'product_idが空でなければ保存できる' do
-          @purchase.product_id = 1
-          expect(@purchase).to be_valid
-        end
-
         it '建物名が空でも保存できる' do
           @purchase.building_name = nil
           expect(@purchase).to be_valid
         end
       end
 
-
+      
       context '内容に問題がある場合' do
         it 'user_idが空だと保存できない' do
           @purchase.user_id = nil
