@@ -55,8 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def ensure_correct_user
-    unless @product.user.id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path unless @product.user.id == current_user.id
+    redirect_to root_path if @product.purchase.present?
   end
 end
