@@ -145,11 +145,15 @@
 
         </div>
         <div class='item-info'>
+        <%= link_to product_path(product.id) do %>
           <h3 class='item-name'>
             <%= product.name %>
+            <% end %>
           </h3>
           <div class='item-price'>
-            <span><%= product.price %>円<br><%= product.shipping_fee.name %></span>
+          <%= link_to product_path(product.id) do %>
+            <span><%=  product.price %>円<br><%= product.shipping_fee.name %></span>
+             <% end %>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
